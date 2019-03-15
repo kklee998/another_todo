@@ -68,9 +68,7 @@ class ToDoUpdate(Resource):
         if errors:
             return {"status": "error", "data": errors}, 422
 
-        todo = ToDo.query.filter(ToDo.todo_id == todo_id).delete()
+        ToDo.query.filter(ToDo.todo_id == todo_id).delete()
         db.session.commit()
 
-        result = todo_schema.dump(todo).data
-
-        return {"status": 'success', 'data': result}, 204
+        return {"status": 'success', 'data': "Deleted"}, 200
