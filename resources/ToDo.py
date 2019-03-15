@@ -35,9 +35,6 @@ class ToDoResource(Resource):
 
 class ToDoFilter(Resource):
     def get(self, user):
-        todo = ToDo.query.filter(ToDo.user == user).first()
-        if todo is None:
-            return {"status": "fail", "data": "User not found"}, 404
         todo = ToDo.query.filter(ToDo.user == user)
         todo = todos_schema.dump(todo).data
         return {"status": "success", "data": todo}, 200

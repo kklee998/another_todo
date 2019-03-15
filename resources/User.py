@@ -52,7 +52,7 @@ class Login(Resource):
             user=username, password=password).first()
 
         if data is not None:
-            return {"status": "success"}, 200
+            return {"status": "success", "data": 'Login success!'}, 200
 
         return {
             'status': "error", 'data': "Password or Username is invalid"
