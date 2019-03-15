@@ -16,8 +16,15 @@ class Register(Resource):
         if errors:
             return {"status": "error", "data": errors}, 422
 
+        user = User.query.filter_by(user=data['user']).first()
+
+        if user:
+            return{
+                'status': 'fail', 'data': 'User already exist, please login'
+            }
+
         user = User(
-            username=data['username'],
+            username=data['user'],
             password=data['password']
         )
         db.session.add(user)
@@ -38,11 +45,11 @@ class Login(Resource):
         if errors:
             return {"status": "error", "data": errors}, 422
 
-        username = data['username']
+        username = data['user']
         password = data['password']
 
         data = User.query.filter_by(
-            username=username, password=password).first()
+            user=username, password=password).first()
 
         if data is not None:
             return {"status": "success"}, 200
