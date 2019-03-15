@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask_restful import Api
 from resources.Hello import Hello
-from resources.ToDo import ToDoResource, ToDoFilter
+from resources.ToDo import ToDoResource, ToDoFilter, ToDoUpdate
 from resources.User import Register, Login
 
 api_bp = Blueprint('api', __name__)
@@ -11,5 +11,6 @@ api = Api(api_bp)
 api.add_resource(Hello, '/hello')
 api.add_resource(ToDoResource, '/todos')
 api.add_resource(ToDoFilter, '/todos/<user>')
+api.add_resource(ToDoUpdate, '/todos/<todo_id>')
 api.add_resource(Register, '/register')
 api.add_resource(Login, '/login')

@@ -16,9 +16,10 @@ class ToDo(db.Model):
     creation_date = db.Column(
         db.TIMESTAMP, server_default=db.func.current_timestamp(), nullable=False)
 
-    def __init__(self, todo, user):
+    def __init__(self, todo, user, isdone):
         self.todo = todo
         self.user = user
+        self.isdone = isdone
 
 
 class ToDoSchema(ma.Schema):

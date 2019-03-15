@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 
 
 def create_app(config_filename):
@@ -15,6 +16,7 @@ def create_app(config_filename):
     def its_alive():
         return "Well, it's working..."
 
+    CORS(app)
     return app
 
 

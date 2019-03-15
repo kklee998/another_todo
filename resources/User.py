@@ -21,7 +21,7 @@ class Register(Resource):
         if user:
             return{
                 'status': 'fail', 'data': 'User already exist, please login'
-            }
+            }, 400
 
         user = User(
             username=data['user'],
