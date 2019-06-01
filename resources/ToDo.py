@@ -1,6 +1,7 @@
 from flask import request
 from flask_restful import Resource
-from Model import db, ToDo, ToDoSchema
+from models import db
+from models.ToDoModel import ToDoSchema, ToDo
 
 todos_schema = ToDoSchema(many=True)
 todo_schema = ToDoSchema()
